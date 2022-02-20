@@ -3,7 +3,10 @@ import UIKit
 final class CurrencyStackView: UIStackView {
     // MARK: - Properties
     
-    private let countryImageView: UIImageView = .init()
+    // MARK: Private
+    
+    private var countryImage: UIImage = .init()
+    private var textCurrency: String = .init()
     private let currencyLabel: UILabel = .init()
     private let buyLabel: UILabel = .init()
     private let sellLabel: UILabel = .init()
@@ -14,7 +17,6 @@ final class CurrencyStackView: UIStackView {
         super.init(frame: frame)
         addSubviews()
         addSetups()
-        addCountryImageViewConstraints()
     }
     
     @available(*, unavailable)
@@ -25,20 +27,9 @@ final class CurrencyStackView: UIStackView {
     // MARK: - API
     
     func set(CountryImage image: UIImage, Currency currency: String, BuyCurrency buyCurrency: Double, SellCurrency sellCurrency: Double) {
-        countryImageView.image = image
-        currencyLabel.text = currency
+        addCurrencyLabelSetups(image, currency)
         buyLabel.text = String(buyCurrency)
         sellLabel.text = String(sellCurrency)
-    }
-    
-    // MARK: - Constraints
-    
-    // MARK: Private
-    
-    private func addCountryImageViewConstraints() {
-        countryImageView.translatesAutoresizingMaskIntoConstraints = false
-        countryImageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        countryImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
     // MARK: - Setups
@@ -46,46 +37,50 @@ final class CurrencyStackView: UIStackView {
     // MARK: Private
     
     private func addSubviews() {
-        addArrangedSubviews(countryImageView,
-                            currencyLabel,
-                            buyLabel,
-                            sellLabel)
+        addArrangedSubviews(
+            currencyLabel,
+            buyLabel,
+            sellLabel)
     }
     
     private func addSetups() {
         addStackViewSetups()
-        addCountryImageViewSetups()
-        addCurrencyLabelSetups()
         addBuyLabelSetups()
         addSellLabelSetups()
     }
     
     private func addStackViewSetups() {
         axis = .vertical
-        alignment = .fill
+        alignment = .leading
         distribution = .fillProportionally
     }
     
-    private func addCountryImageViewSetups() {
-        countryImageView.layer.cornerRadius = countryImageView.frame.size.width / 2
-        countryImageView.clipsToBounds = true
-    }
-    
-    private func addCurrencyLabelSetups() {
-        currencyLabel.textColor = .black
-        currencyLabel.textAlignment = .left
-        currencyLabel.font = UIFont.systemFont(ofSize: 18, weight: .light)
+    private func addCurrencyLabelSetups(_ image: UIImage, _ text: String) {
+        let attachment = NSTextAttachment()
+        attachment.image = image
+        let attachmentString = NSMutableAttributedString(attachment: attachment)
+        
+        let firstAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .light)
+        ]
+        
+        let firstString = NSMutableAttributedString(string: text, attributes: firstAttributes)
+        
+        attachmentString.append(firstString)
+
+        currencyLabel.attributedText = attachmentString
     }
     
     private func addBuyLabelSetups() {
-        buyLabel.textColor = .black
-        buyLabel.textAlignment = .left
+        buyLabel.textColor = .white
+        buyLabel.textAlignment = .right
         buyLabel.font = UIFont.systemFont(ofSize: 18, weight: .light)
     }
     
     private func addSellLabelSetups() {
-        sellLabel.textColor = .black
-        sellLabel.textAlignment = .left
+        sellLabel.textColor = .white
+        sellLabel.textAlignment = .right
         sellLabel.font = UIFont.systemFont(ofSize: 18, weight: .light)
     }
 }

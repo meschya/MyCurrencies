@@ -18,6 +18,14 @@
 		BFD8428D27B846AE00422205 /* CurrencyStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD8428C27B846AE00422205 /* CurrencyStackView.swift */; };
 		BFD8429027B8546400422205 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD8428F27B8546400422205 /* UIStackView+.swift */; };
 		BFD8429227B865D400422205 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD8429127B865D400422205 /* UIView+.swift */; };
+		BFD8429427B96F0000422205 /* ExchangeRatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD8429327B96F0000422205 /* ExchangeRatesTableViewCell.swift */; };
+		BFD842B827BA54B600422205 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD842B727BA54B600422205 /* Currency.swift */; };
+		BFD842E727BBFC7A00422205 /* CurrencyCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD842E627BBFC7A00422205 /* CurrencyCalculatorView.swift */; };
+		BFD842E927BC004600422205 /* CurrencyCalculatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD842E827BC004600422205 /* CurrencyCalculatorTableViewCell.swift */; };
+		BFD8434127BD802D00422205 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD8434027BD802D00422205 /* UITextField+.swift */; };
+		BFD8434327BD829700422205 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD8434227BD829700422205 /* MainTabBarController.swift */; };
+		BFD8434527BD83FA00422205 /* AllCurrencyesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD8434427BD83FA00422205 /* AllCurrencyesTableViewController.swift */; };
+		BFD8434927BD863800422205 /* InfoCurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD8434827BD863800422205 /* InfoCurrencyTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +44,14 @@
 		BFD8428C27B846AE00422205 /* CurrencyStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyStackView.swift; sourceTree = "<group>"; };
 		BFD8428F27B8546400422205 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		BFD8429127B865D400422205 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		BFD8429327B96F0000422205 /* ExchangeRatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRatesTableViewCell.swift; sourceTree = "<group>"; };
+		BFD842B727BA54B600422205 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		BFD842E627BBFC7A00422205 /* CurrencyCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCalculatorView.swift; sourceTree = "<group>"; };
+		BFD842E827BC004600422205 /* CurrencyCalculatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCalculatorTableViewCell.swift; sourceTree = "<group>"; };
+		BFD8434027BD802D00422205 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		BFD8434227BD829700422205 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		BFD8434427BD83FA00422205 /* AllCurrencyesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCurrencyesTableViewController.swift; sourceTree = "<group>"; };
+		BFD8434827BD863800422205 /* InfoCurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCurrencyTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +113,9 @@
 		BFD8428027B8077400422205 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BFD8434227BD829700422205 /* MainTabBarController.swift */,
 				BFD8428827B8445100422205 /* CurrencyConverterTableViewController.swift */,
+				BFD8434427BD83FA00422205 /* AllCurrencyesTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -105,8 +123,8 @@
 		BFD8428127B8078100422205 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BFD8428327B810FC00422205 /* ExchangeRatesView.swift */,
-				BFD8428C27B846AE00422205 /* CurrencyStackView.swift */,
+				BFD8434727BD861500422205 /* AllCurrencyes */,
+				BFD8434627BD85CB00422205 /* Calculator */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -114,6 +132,7 @@
 		BFD8428227B8078700422205 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BFD842B727BA54B600422205 /* Currency.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -131,8 +150,45 @@
 			children = (
 				BFD8428F27B8546400422205 /* UIStackView+.swift */,
 				BFD8429127B865D400422205 /* UIView+.swift */,
+				BFD8434027BD802D00422205 /* UITextField+.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BFD842E227BBE07E00422205 /* ExchangeRates */ = {
+			isa = PBXGroup;
+			children = (
+				BFD8428327B810FC00422205 /* ExchangeRatesView.swift */,
+				BFD8429327B96F0000422205 /* ExchangeRatesTableViewCell.swift */,
+				BFD8428C27B846AE00422205 /* CurrencyStackView.swift */,
+			);
+			path = ExchangeRates;
+			sourceTree = "<group>";
+		};
+		BFD842E327BBE09D00422205 /* CurrencyCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				BFD842E627BBFC7A00422205 /* CurrencyCalculatorView.swift */,
+				BFD842E827BC004600422205 /* CurrencyCalculatorTableViewCell.swift */,
+			);
+			path = CurrencyCalculator;
+			sourceTree = "<group>";
+		};
+		BFD8434627BD85CB00422205 /* Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				BFD842E227BBE07E00422205 /* ExchangeRates */,
+				BFD842E327BBE09D00422205 /* CurrencyCalculator */,
+			);
+			path = Calculator;
+			sourceTree = "<group>";
+		};
+		BFD8434727BD861500422205 /* AllCurrencyes */ = {
+			isa = PBXGroup;
+			children = (
+				BFD8434827BD863800422205 /* InfoCurrencyTableViewCell.swift */,
+			);
+			path = AllCurrencyes;
 			sourceTree = "<group>";
 		};
 		FB3808507E5F6BCC9CD410CD /* Frameworks */ = {
@@ -257,13 +313,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFD8434527BD83FA00422205 /* AllCurrencyesTableViewController.swift in Sources */,
 				BFD8429027B8546400422205 /* UIStackView+.swift in Sources */,
+				BFD8434127BD802D00422205 /* UITextField+.swift in Sources */,
 				BFD8426D27B8075F00422205 /* AppDelegate.swift in Sources */,
+				BFD8434927BD863800422205 /* InfoCurrencyTableViewCell.swift in Sources */,
 				BFD8428727B811DB00422205 /* APIManager.swift in Sources */,
+				BFD842E727BBFC7A00422205 /* CurrencyCalculatorView.swift in Sources */,
+				BFD842E927BC004600422205 /* CurrencyCalculatorTableViewCell.swift in Sources */,
 				BFD8426F27B8075F00422205 /* SceneDelegate.swift in Sources */,
 				BFD8429227B865D400422205 /* UIView+.swift in Sources */,
 				BFD8428427B810FC00422205 /* ExchangeRatesView.swift in Sources */,
+				BFD842B827BA54B600422205 /* Currency.swift in Sources */,
+				BFD8434327BD829700422205 /* MainTabBarController.swift in Sources */,
 				BFD8428D27B846AE00422205 /* CurrencyStackView.swift in Sources */,
+				BFD8429427B96F0000422205 /* ExchangeRatesTableViewCell.swift in Sources */,
 				BFD8428927B8445100422205 /* CurrencyConverterTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
