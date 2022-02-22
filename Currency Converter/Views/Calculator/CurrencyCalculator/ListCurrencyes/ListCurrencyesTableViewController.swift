@@ -1,6 +1,6 @@
 import UIKit
 
-final class AllCurrencyesTableViewController: UITableViewController {
+final class ListCurrencyesTableViewController: UITableViewController {
     // MARK: - Properties
 
     // MARK: Private
@@ -10,8 +10,6 @@ final class AllCurrencyesTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
-    
-    private let countryImages: [String] = ["","","","",""]
 
     // MARK: - LIfecycle
 
@@ -66,9 +64,8 @@ final class AllCurrencyesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: InfoCurrencyTableViewCell.identifier, for: indexPath) as? InfoCurrencyTableViewCell {
-            cell.set(currencyes[indexPath.row].Cur_Abbreviation,
-                     String(format: "%.3f", currencyes[indexPath.row].Cur_OfficialRate),
-                     UIImage(named: countryImages[indexPath.row])!)
+            cell.set(currencyes[indexPath.row].Cur_Abbreviation, String(format: "%.3f",
+                                                                        currencyes[indexPath.row].Cur_OfficialRate))
             return cell
         }
         return UITableViewCell()

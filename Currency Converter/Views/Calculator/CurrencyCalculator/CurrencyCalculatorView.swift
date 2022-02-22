@@ -4,8 +4,12 @@ import UIKit
 final class CurrencyCalculatorView: UIView {
     // MARK: - Properties
     
-    // MARK: Private
+    // MARK: Public
     
+    weak var delegate: TransferActionsBetweenVCDelegate?
+    
+    // MARK: Private
+
     private let mainStackView: UIStackView = .init()
     private let bynStackView: UIStackView = .init()
     private let anyCurrencyStackView: UIStackView = .init()
@@ -20,7 +24,7 @@ final class CurrencyCalculatorView: UIView {
         super.init(frame: frame)
         addSubviews()
         addSetups()
-        addMainStackViewConstraints()
+        addConstraints()
     }
     
     @available(*, unavailable)
@@ -31,6 +35,13 @@ final class CurrencyCalculatorView: UIView {
     // MARK: - Constraints
     
     // MARK: Private
+    
+    private func addConstraints() {
+        addMainStackViewConstraints()
+        addBynImageConstraint()
+        addAnyCurrencyImageConstraints()
+        addBynAndAnyCurrencyTFConstraints()
+    }
     
     private func addMainStackViewConstraints() {
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -46,12 +57,16 @@ final class CurrencyCalculatorView: UIView {
         bynImage.topAnchor.constraint(equalTo: bynStackView.topAnchor, constant: 20).isActive = true
         bynImage.bottomAnchor.constraint(equalTo: bynStackView.bottomAnchor, constant: -20).isActive = true
         bynImage.widthAnchor.constraint(equalTo: bynStackView.widthAnchor, multiplier: 0.1).isActive = true
-        
+    }
+    
+    private func addAnyCurrencyImageConstraints() {
         anyCurrencyImage.translatesAutoresizingMaskIntoConstraints = false
         anyCurrencyImage.topAnchor.constraint(equalTo: anyCurrencyStackView.topAnchor, constant: 20).isActive = true
         anyCurrencyImage.bottomAnchor.constraint(equalTo: anyCurrencyStackView.bottomAnchor, constant: -20).isActive = true
         anyCurrencyImage.widthAnchor.constraint(equalTo: anyCurrencyStackView.widthAnchor, multiplier: 0.1).isActive = true
-        
+    }
+    
+    private func addBynAndAnyCurrencyTFConstraints() {
         bynTextField.translatesAutoresizingMaskIntoConstraints = false
         bynTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
@@ -88,8 +103,8 @@ final class CurrencyCalculatorView: UIView {
             self.isSkeletonable = true
             self.skeletonCornerRadius = 15
             self.showAnimatedSkeleton(usingColor: UIColor(red: 36/255, green: 34/255, blue: 49/255, alpha: 1.0),
-                                 animation: nil,
-                                 transition: .crossDissolve(0.25))
+                                      animation: nil,
+                                      transition: .crossDissolve(0.25))
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.hideSkeleton()
@@ -124,6 +139,9 @@ final class CurrencyCalculatorView: UIView {
         bynTextField.layer.borderWidth = 1
         bynTextField.layer.borderColor = UIColor.darkGray.cgColor
         bynTextField.keyboardType = .numberPad
+        let tap = UITapGestureRecognizer(target: self, action: #selector(showListCurrencyes))
+        anyCurrencyImage.isUserInteractionEnabled = true
+        anyCurrencyImage.addGestureRecognizer(tap)
     }
     
     private func addAnyCurrencyTextFieldSetups() {
@@ -133,5 +151,30 @@ final class CurrencyCalculatorView: UIView {
         anyCurrencyTextField.layer.borderWidth = 1
         anyCurrencyTextField.layer.borderColor = UIColor.darkGray.cgColor
         anyCurrencyTextField.keyboardType = .numberPad
+    }
+    
+    // MARK: - Actions
+    
+    // MARK: Private
+    
+    @objc private func showListCurrencyes() {
+        let listVC = ListCurrencyesTableViewController()
+        listVC.modalPresentationStyle = .popover
+        listVC.modalTransitionStyle = .crossDissolve
+        let popOverVC = listVC.popoverPresentationController
+        popOverVC?.delegate = self
+        popOverVC?.sourceView = anyCurrencyImage
+        popOverVC?.sourceRect = CGRect(x: anyCurrencyImage.bounds.midX,
+                                       y: anyCurrencyImage.bounds.minY,
+                                       width: 0,
+                                       height: 0)
+        listVC.preferredContentSize = CGSize(width: 250, height: 250)
+        delegate?.nextScreen(listVC)
+    }
+}
+
+extension CurrencyCalculatorView: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
 }

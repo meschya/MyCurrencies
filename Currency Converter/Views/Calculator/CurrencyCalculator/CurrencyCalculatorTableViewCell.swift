@@ -9,7 +9,7 @@ final class CurrencyCalculatorTableViewCell: UITableViewCell {
 
     // MARK: Private
 
-    private let currencyCalculatorView: CurrencyCalculatorView = .init()
+     let currencyCalculatorView: CurrencyCalculatorView = .init()
 
     // MARK: - LIfecycle
 
@@ -19,6 +19,7 @@ final class CurrencyCalculatorTableViewCell: UITableViewCell {
         contentView.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 35/255, alpha: 1.0)
         addCurrencyCalculatorViewConstraints()
     }
+    
 
     @available(*, unavailable)
     required init?(coder: NSCoder) {
@@ -35,5 +36,11 @@ final class CurrencyCalculatorTableViewCell: UITableViewCell {
         currencyCalculatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
         currencyCalculatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
         currencyCalculatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
+    }
+}
+
+extension CurrencyCalculatorTableViewCell: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
 }

@@ -12,16 +12,17 @@ final class CurrencyConverterTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        addTableViewSetups()
+        addViewSetups()
     }
 
     // MARK: - Setups
 
     // MARK: Private
 
-    private func addTableViewSetups() {
+    private func addViewSetups() {
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 35/255, alpha: 1.0)
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
     // MARK: - Table view data source
@@ -61,9 +62,16 @@ final class CurrencyConverterTableViewController: UITableViewController {
             tableView.register(CurrencyCalculatorTableViewCell.self,
                                forCellReuseIdentifier: CurrencyCalculatorTableViewCell.identifier)
             if let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyCalculatorTableViewCell.identifier, for: indexPath) as? CurrencyCalculatorTableViewCell {
+                cell.currencyCalculatorView.delegate = self
                 return cell
             }
         }
         return UITableViewCell()
+    }
+}
+
+extension CurrencyConverterTableViewController: TransferActionsBetweenVCDelegate {
+    func nextScreen(_ list: ListCurrencyesTableViewController) {
+        present(list, animated: true)
     }
 }

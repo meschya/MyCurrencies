@@ -5,7 +5,7 @@ final class MainTabBarController: UITabBarController {
 
     // MARK: Private
 
-    private let currencyConverterVC = CurrencyConverterTableViewController()
+    private let currencyConverterVC = UINavigationController(rootViewController: CurrencyConverterTableViewController())
     private let allCurrencyesVC = UINavigationController(rootViewController: AllCurrencyesTableViewController())
 
     // MARK: - LIfecycle

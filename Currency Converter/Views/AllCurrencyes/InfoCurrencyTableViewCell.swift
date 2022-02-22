@@ -10,6 +10,7 @@ final class InfoCurrencyTableViewCell: UITableViewCell {
     // MARK: Private
     
     private let mainStackView: UIStackView = .init()
+    private let countryImageView: UIImageView = .init()
     private let currencyView: UIView = .init()
     private let nameCurrencyLabel: UILabel = .init()
     private let scaleCurrencyLabel: UILabel = .init()
@@ -31,9 +32,10 @@ final class InfoCurrencyTableViewCell: UITableViewCell {
     
     // MARK: - API
     
-    func set(_ name: String, _ scale: String) {
+    func set(_ name: String, _ scale: String, _ image: UIImage) {
         nameCurrencyLabel.text = name
         scaleCurrencyLabel.text = scale
+        countryImageView.image = image
     }
     
     // MARK: - Constraints
@@ -43,6 +45,8 @@ final class InfoCurrencyTableViewCell: UITableViewCell {
     private func addConstraints() {
         addCryptoViewConstraints()
         addMainStackViewConstraints()
+        addCountryImageConstraints()
+        addNameCurrencyLabelConstraints()
     }
     
     private func addCryptoViewConstraints() {
@@ -61,6 +65,16 @@ final class InfoCurrencyTableViewCell: UITableViewCell {
         mainStackView.bottomAnchor.constraint(equalTo: currencyView.bottomAnchor, constant: -10).isActive = true
     }
     
+    private func addCountryImageConstraints() {
+        countryImageView.translatesAutoresizingMaskIntoConstraints = false
+        countryImageView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.13).isActive = true
+    }
+    
+    private func addNameCurrencyLabelConstraints() {
+        nameCurrencyLabel.translatesAutoresizingMaskIntoConstraints = false
+        nameCurrencyLabel.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.15).isActive = true
+    }
+    
     // MARK: - Setups
     
     // MARK: Private
@@ -68,26 +82,29 @@ final class InfoCurrencyTableViewCell: UITableViewCell {
     private func addSubviews() {
         contentView.addSubview(currencyView)
         currencyView.addSubview(mainStackView)
+        mainStackView.addArrangedSubview(countryImageView)
         mainStackView.addArrangedSubview(nameCurrencyLabel)
         mainStackView.addArrangedSubview(scaleCurrencyLabel)
+        countryImageView.image = UIImage(named: "XDR")
     }
     
     private func addSetups() {
-        addCryptoViewSetups()
+        addCurrencyViewSetups()
         addMainStackViewSetups()
         addNameCoinLabelSetups()
         addScaleCoinLabelSetups()
     }
     
-    private func addCryptoViewSetups() {
+    private func addCurrencyViewSetups() {
         currencyView.backgroundColor = UIColor(red: 36/255, green: 34/255, blue: 49/255, alpha: 1.0)
         currencyView.layer.cornerRadius = 10
     }
     
     private func addMainStackViewSetups() {
         mainStackView.axis = .horizontal
-        mainStackView.distribution = .fillEqually
+        mainStackView.distribution = .fillProportionally
         mainStackView.alignment = .fill
+        mainStackView.spacing = 10
     }
     
     private func addNameCoinLabelSetups() {
