@@ -32,10 +32,10 @@ final class InfoCurrencyTableViewCell: UITableViewCell {
     
     // MARK: - API
     
-    func set(_ name: String, _ scale: String, _ image: UIImage) {
+    func set(_ image: String, _ name: String, _ scale: String) {
+        countryImageView.image = UIImage(named: image)
         nameCurrencyLabel.text = name
         scaleCurrencyLabel.text = scale
-        countryImageView.image = image
     }
     
     // MARK: - Constraints
@@ -72,7 +72,7 @@ final class InfoCurrencyTableViewCell: UITableViewCell {
     
     private func addNameCurrencyLabelConstraints() {
         nameCurrencyLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameCurrencyLabel.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.15).isActive = true
+        nameCurrencyLabel.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 0.25).isActive = true
     }
     
     // MARK: - Setups
@@ -85,7 +85,6 @@ final class InfoCurrencyTableViewCell: UITableViewCell {
         mainStackView.addArrangedSubview(countryImageView)
         mainStackView.addArrangedSubview(nameCurrencyLabel)
         mainStackView.addArrangedSubview(scaleCurrencyLabel)
-        countryImageView.image = UIImage(named: "XDR")
     }
     
     private func addSetups() {
@@ -104,7 +103,7 @@ final class InfoCurrencyTableViewCell: UITableViewCell {
         mainStackView.axis = .horizontal
         mainStackView.distribution = .fillProportionally
         mainStackView.alignment = .fill
-        mainStackView.spacing = 10
+        mainStackView.spacing = 15
     }
     
     private func addNameCoinLabelSetups() {

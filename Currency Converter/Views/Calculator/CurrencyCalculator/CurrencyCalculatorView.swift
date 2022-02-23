@@ -10,6 +10,15 @@ final class CurrencyCalculatorView: UIView {
     
     // MARK: Private
 
+    private var currency: Currency? {
+        didSet {
+            set(currency!.Cur_Abbreviation, currency!.Cur_OfficialRate)
+            bynTextField.text = ""
+            anyCurrencyTextField.text = ""
+        }
+    }
+
+    private var scaleCurrency: Double = .init()
     private let mainStackView: UIStackView = .init()
     private let bynStackView: UIStackView = .init()
     private let anyCurrencyStackView: UIStackView = .init()
@@ -92,8 +101,8 @@ final class CurrencyCalculatorView: UIView {
         addAnyCurrencyStackViewSetups()
         addBynTextFieldSetups()
         addAnyCurrencyTextFieldSetups()
-        bynImage.image = UIImage(named: "BY")
-        anyCurrencyImage.image = UIImage(named: "USA")
+        addAnyCurrencyImageSetups()
+        addBynAndAnyCurrencyImageSetups()
     }
     
     private func addViewSetups() {
@@ -132,6 +141,11 @@ final class CurrencyCalculatorView: UIView {
         anyCurrencyStackView.spacing = 10
     }
     
+    private func addBynAndAnyCurrencyImageSetups() {
+        bynImage.image = UIImage(named: "BY")
+        anyCurrencyImage.image = UIImage(named: "coin")
+    }
+    
     private func addBynTextFieldSetups() {
         bynTextField.placeholder = "BYN"
         bynTextField.indent(size: 10)
@@ -139,18 +153,25 @@ final class CurrencyCalculatorView: UIView {
         bynTextField.layer.borderWidth = 1
         bynTextField.layer.borderColor = UIColor.darkGray.cgColor
         bynTextField.keyboardType = .numberPad
-        let tap = UITapGestureRecognizer(target: self, action: #selector(showListCurrencyes))
-        anyCurrencyImage.isUserInteractionEnabled = true
-        anyCurrencyImage.addGestureRecognizer(tap)
+        bynTextField.addTarget(self, action: #selector(bynTextFieldDidChange(_:)),
+                               for: .editingChanged)
     }
     
     private func addAnyCurrencyTextFieldSetups() {
-        anyCurrencyTextField.placeholder = "USD"
+        anyCurrencyTextField.placeholder = "Выберите валюту"
         anyCurrencyTextField.indent(size: 10)
         anyCurrencyTextField.layer.cornerRadius = 15
         anyCurrencyTextField.layer.borderWidth = 1
         anyCurrencyTextField.layer.borderColor = UIColor.darkGray.cgColor
         anyCurrencyTextField.keyboardType = .numberPad
+        anyCurrencyTextField.addTarget(self, action: #selector(anyCurrencyFieldDidChange(_:)),
+                                       for: .editingChanged)
+    }
+    
+    private func addAnyCurrencyImageSetups() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(showListCurrencyes))
+        anyCurrencyImage.isUserInteractionEnabled = true
+        anyCurrencyImage.addGestureRecognizer(tap)
     }
     
     // MARK: - Actions
@@ -158,7 +179,7 @@ final class CurrencyCalculatorView: UIView {
     // MARK: Private
     
     @objc private func showListCurrencyes() {
-        let listVC = ListCurrencyesTableViewController()
+        let listVC = AllCurrencyesTableViewController()
         listVC.modalPresentationStyle = .popover
         listVC.modalTransitionStyle = .crossDissolve
         let popOverVC = listVC.popoverPresentationController
@@ -168,13 +189,46 @@ final class CurrencyCalculatorView: UIView {
                                        y: anyCurrencyImage.bounds.minY,
                                        width: 0,
                                        height: 0)
-        listVC.preferredContentSize = CGSize(width: 250, height: 250)
-        delegate?.nextScreen(listVC)
+        listVC.preferredContentSize = CGSize(width: 300, height: 250)
+        listVC.delegate = self
+        delegate?.viewScreen(listVC)
+    }
+    
+    // MARK: - Helpers
+    
+    // MARK: Private
+    
+    private func set(_ textAbbreviation: String, _ scale: Double) {
+        anyCurrencyImage.image = UIImage(named: textAbbreviation)
+        anyCurrencyTextField.placeholder = textAbbreviation
+        scaleCurrency = scale
+    }
+    
+    @objc func bynTextFieldDidChange(_ textField: UITextField) {
+        if anyCurrencyImage.image != UIImage(named: "coin") {
+            let byn = Double(bynTextField.text!) ?? 1
+            anyCurrencyTextField.text = String(format: "%.3f", byn/scaleCurrency)
+        }
+    }
+    
+    @objc func anyCurrencyFieldDidChange(_ textField: UITextField) {
+        if anyCurrencyImage.image != UIImage(named: "coin") {
+            let anyCurrency = Double(anyCurrencyTextField.text!) ?? 1
+            bynTextField.text = String(format: "%.3f", anyCurrency * scaleCurrency)
+        }
     }
 }
+
+// MARK: - Extensions
 
 extension CurrencyCalculatorView: UIPopoverPresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
+    }
+}
+
+extension CurrencyCalculatorView: TransferCurrencyBetweenVCDelegate {
+    func transferMovieInfo(_ currency: Currency) {
+        self.currency = currency
     }
 }

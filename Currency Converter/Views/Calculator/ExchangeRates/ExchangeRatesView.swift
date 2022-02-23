@@ -3,11 +3,13 @@ import UIKit
 
 final class ExchangeRatesView: UIView {
     // MARK: - Properties
+    
+    // MARK: Private
 
     private let mainStackView: UIStackView = .init()
     private let labelsStackView: UIStackView = .init()
     private var currencies: [Currency] = []
-    private let countryImages: [String] = ["USD", "EUR", "RU"]
+    private let countryImages: [String] = ["US", "EU", "RU"]
     private let nameLabels: [String] = ["Валюта", "Покупка", "Продажа"]
     private let infoLabel: UILabel = .init()
 
@@ -124,8 +126,8 @@ final class ExchangeRatesView: UIView {
             stack.alignment = .fill
             stack.set(CountryImage: UIImage(named: countryImages[counter - 1])!,
                       Currency: " \(item.Cur_Scale) \(item.Cur_Abbreviation)",
-                      BuyCurrency: Double(item.Cur_OfficialRate),
-                      SellCurrency: Double(item.Cur_OfficialRate))
+                      BuyCurrency: "—",
+                      SellCurrency: String(format: "%.3f", Double(item.Cur_OfficialRate)))
             mainStackView.addArrangedSubview(stack)
         }
         mainStackView.addArrangedSubview(infoLabel)
