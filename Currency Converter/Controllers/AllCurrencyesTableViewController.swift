@@ -10,7 +10,7 @@ final class AllCurrencyesTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
-    
+
     weak var delegate: TransferCurrencyBetweenVCDelegate?
 
     // MARK: - LIfecycle
