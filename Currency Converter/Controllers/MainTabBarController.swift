@@ -12,6 +12,7 @@ final class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        sleep(1)
         addSetups()
     }
 

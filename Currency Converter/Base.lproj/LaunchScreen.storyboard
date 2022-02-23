@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,20 +12,55 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="pMb-c3-r4d">
+                                <rect key="frame" x="173.66666666666666" y="417.66666666666669" width="81" height="91"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="91" id="MJG-TE-KDn"/>
+                                    <constraint firstAttribute="width" constant="81" id="mw6-xE-MRE"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyCurrencies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsg-5K-1DY">
+                                <rect key="frame" x="128" y="443" width="172" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="172" id="U0i-Mb-p5j"/>
+                                    <constraint firstAttribute="height" constant="40" id="fal-R5-xqn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="40"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created by Yegor Meshcheryakov Version 0.1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdH-Ha-uOC">
+                                <rect key="frame" x="120" y="808" width="188" height="69"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="188" id="BxH-PI-IWF"/>
+                                    <constraint firstAttribute="height" constant="69" id="dh3-j4-OHf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="qsg-5K-1DY" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="4Ex-QV-JUd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bdH-Ha-uOC" secondAttribute="bottom" constant="15" id="XEp-lX-IJ6"/>
+                            <constraint firstItem="qsg-5K-1DY" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="e1x-Xm-c6a"/>
+                            <constraint firstItem="pMb-c3-r4d" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="g9N-RL-gpT"/>
+                            <constraint firstItem="pMb-c3-r4d" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="svC-Zu-9ex"/>
+                            <constraint firstItem="bdH-Ha-uOC" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="zTs-2B-v7u"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+            <point key="canvasLocation" x="51.86915887850467" y="374.51403887688986"/>
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="logo" width="384" height="384"/>
     </resources>
 </document>
