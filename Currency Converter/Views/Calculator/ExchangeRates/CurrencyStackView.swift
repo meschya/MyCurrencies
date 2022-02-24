@@ -26,10 +26,10 @@ final class CurrencyStackView: UIStackView {
     
     // MARK: - API
     
-    func set(CountryImage image: UIImage, Currency currency: String, BuyCurrency buyCurrency: Double, SellCurrency sellCurrency: Double) {
+    func set(CountryImage image: UIImage, Currency currency: String, BuyCurrency buyCurrency: String, SellCurrency sellCurrency: String) {
         addCurrencyLabelSetups(image, currency)
         buyLabel.text = String(buyCurrency)
-        sellLabel.text = String(sellCurrency)
+        sellLabel.text = sellCurrency
     }
     
     // MARK: - Setups

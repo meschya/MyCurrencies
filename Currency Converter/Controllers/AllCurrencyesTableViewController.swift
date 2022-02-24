@@ -11,6 +11,8 @@ final class AllCurrencyesTableViewController: UITableViewController {
         }
     }
 
+    weak var delegate: TransferCurrencyBetweenVCDelegate?
+
     // MARK: - LIfecycle
 
     override func viewDidLoad() {
@@ -64,10 +66,15 @@ final class AllCurrencyesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: InfoCurrencyTableViewCell.identifier, for: indexPath) as? InfoCurrencyTableViewCell {
-            cell.set(currencyes[indexPath.row].Cur_Abbreviation, String(format: "%.3f",
-                                                                        currencyes[indexPath.row].Cur_OfficialRate))
+            cell.set(currencyes[indexPath.row].Cur_Abbreviation,
+                     currencyes[indexPath.row].Cur_Abbreviation,
+                     String(format: "%.2f", currencyes[indexPath.row].Cur_OfficialRate))
             return cell
         }
         return UITableViewCell()
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.transferMovieInfo(currencyes[indexPath.row])
     }
 }

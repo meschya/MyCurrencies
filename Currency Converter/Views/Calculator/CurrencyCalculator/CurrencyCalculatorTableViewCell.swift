@@ -9,7 +9,7 @@ final class CurrencyCalculatorTableViewCell: UITableViewCell {
 
     // MARK: Private
 
-    private let currencyCalculatorView: CurrencyCalculatorView = .init()
+    let currencyCalculatorView: CurrencyCalculatorView = .init()
 
     // MARK: - LIfecycle
 
@@ -24,16 +24,24 @@ final class CurrencyCalculatorTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - Constraints
-    
+
     // MARK: Private
-    
+
     private func addCurrencyCalculatorViewConstraints() {
         currencyCalculatorView.translatesAutoresizingMaskIntoConstraints = false
         currencyCalculatorView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
         currencyCalculatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
         currencyCalculatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
         currencyCalculatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
+    }
+}
+
+// MARK: - Extension
+
+extension CurrencyCalculatorTableViewCell: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
 }
