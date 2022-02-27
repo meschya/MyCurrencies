@@ -126,8 +126,8 @@ final class ExchangeRatesView: UIView {
             stack.alignment = .fill
             stack.set(CountryImage: UIImage(named: countryImages[counter - 1])!,
                       Currency: " \(item.Cur_Scale) \(item.Cur_Abbreviation)",
-                      BuyCurrency: "—",
-                      SellCurrency: String(format: "%.3f", Double(item.Cur_OfficialRate)))
+                      BuyCurrency: String(format: "%.3f", Double(item.Cur_OfficialRate)),
+                      SellCurrency: "—")
             mainStackView.addArrangedSubview(stack)
         }
         mainStackView.addArrangedSubview(infoLabel)

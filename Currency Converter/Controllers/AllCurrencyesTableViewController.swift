@@ -4,7 +4,8 @@ final class AllCurrencyesTableViewController: UITableViewController {
     // MARK: - Properties
 
     // MARK: Private
-
+    
+    private var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
     private var currencyes: [Currency] = [] {
         didSet {
             self.tableView.reloadData()
@@ -24,8 +25,10 @@ final class AllCurrencyesTableViewController: UITableViewController {
     // MARK: - API
 
     private func fetchDataCurrency() {
+        showActivityIndicator()
         APIManager.instance.getCurrencys(completion: { currencyes in
             self.currencyes = currencyes
+            self.hideActivityIndicator()
         })
     }
 
@@ -48,6 +51,27 @@ final class AllCurrencyesTableViewController: UITableViewController {
     private func addNavigationSetups() {
         title = "Валюта"
         navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    // MARK: - Helpers
+    
+    // MARK: Private
+    
+    private func showActivityIndicator() {
+        view.isUserInteractionEnabled = false
+        let viewController = tabBarController ?? navigationController ?? self
+        activityIndicator.frame = CGRect(x: 0,
+                                         y: 0,
+                                         width: viewController.view.frame.width,
+                                         height: viewController.view.frame.height)
+        viewController.view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+    }
+    
+    private func hideActivityIndicator() {
+        view.isUserInteractionEnabled = true
+        activityIndicator.stopAnimating()
+        activityIndicator.removeFromSuperview()
     }
 
     // MARK: - Table view data source
