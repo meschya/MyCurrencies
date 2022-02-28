@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		43FB8176394D22D9BAAF5235 /* Pods_Currency_Converter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2A617A9317B4E5FBF2CE89 /* Pods_Currency_Converter.framework */; };
 		BF4F356A27C44643004386FA /* Transfers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F356927C44643004386FA /* Transfers.swift */; };
+		BF4F357227CCE575004386FA /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F357127CCE575004386FA /* Colors.swift */; };
+		BF4F357527CD26ED004386FA /* Sections.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F357427CD26ED004386FA /* Sections.swift */; };
 		BFD8426D27B8075F00422205 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD8426C27B8075F00422205 /* AppDelegate.swift */; };
 		BFD8426F27B8075F00422205 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD8426E27B8075F00422205 /* SceneDelegate.swift */; };
 		BFD8427627B8076100422205 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFD8427527B8076100422205 /* Assets.xcassets */; };
@@ -34,6 +36,8 @@
 		932E9FCF0725F9DB9DE41657 /* Pods-Currency Converter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Currency Converter.debug.xcconfig"; path = "Target Support Files/Pods-Currency Converter/Pods-Currency Converter.debug.xcconfig"; sourceTree = "<group>"; };
 		98F4DFF48CF2CC2C8C0C3D27 /* Pods-Currency Converter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Currency Converter.release.xcconfig"; path = "Target Support Files/Pods-Currency Converter/Pods-Currency Converter.release.xcconfig"; sourceTree = "<group>"; };
 		BF4F356927C44643004386FA /* Transfers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfers.swift; sourceTree = "<group>"; };
+		BF4F357127CCE575004386FA /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		BF4F357427CD26ED004386FA /* Sections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sections.swift; sourceTree = "<group>"; };
 		BFD8426927B8075F00422205 /* Currency Converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Currency Converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD8426C27B8075F00422205 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFD8426E27B8075F00422205 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +89,22 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		BF4F357027CCE566004386FA /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				BF4F357127CCE575004386FA /* Colors.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		BF4F357327CD26C1004386FA /* TableSections */ = {
+			isa = PBXGroup;
+			children = (
+				BF4F357427CD26ED004386FA /* Sections.swift */,
+			);
+			path = TableSections;
+			sourceTree = "<group>";
+		};
 		BFD8426027B8075F00422205 = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +126,7 @@
 		BFD8426B27B8075F00422205 /* Currency Converter */ = {
 			isa = PBXGroup;
 			children = (
+				BF4F357027CCE566004386FA /* Enums */,
 				BF4F356827C4461B004386FA /* Protocols */,
 				BFD8428E27B8545400422205 /* Extensions */,
 				BFD8428527B811CE00422205 /* API */,
@@ -188,6 +209,7 @@
 		BFD8434627BD85CB00422205 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				BF4F357327CD26C1004386FA /* TableSections */,
 				BFD842E227BBE07E00422205 /* ExchangeRates */,
 				BFD842E327BBE09D00422205 /* CurrencyCalculator */,
 			);
@@ -325,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFD8434527BD83FA00422205 /* AllCurrencyesTableViewController.swift in Sources */,
+				BF4F357227CCE575004386FA /* Colors.swift in Sources */,
 				BFD8429027B8546400422205 /* UIStackView+.swift in Sources */,
 				BFD8434127BD802D00422205 /* UITextField+.swift in Sources */,
 				BFD8426D27B8075F00422205 /* AppDelegate.swift in Sources */,
@@ -334,6 +357,7 @@
 				BFD842E727BBFC7A00422205 /* CurrencyCalculatorView.swift in Sources */,
 				BFD842E927BC004600422205 /* CurrencyCalculatorTableViewCell.swift in Sources */,
 				BFD8426F27B8075F00422205 /* SceneDelegate.swift in Sources */,
+				BF4F357527CD26ED004386FA /* Sections.swift in Sources */,
 				BFD8429227B865D400422205 /* UIView+.swift in Sources */,
 				BFD8428427B810FC00422205 /* ExchangeRatesView.swift in Sources */,
 				BFD842B827BA54B600422205 /* Currency.swift in Sources */,

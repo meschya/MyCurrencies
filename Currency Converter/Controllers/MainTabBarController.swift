@@ -12,7 +12,7 @@ final class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        sleep(1)
+        sleep(1) // Delay for the startup s÷creen
         addSetups()
     }
 

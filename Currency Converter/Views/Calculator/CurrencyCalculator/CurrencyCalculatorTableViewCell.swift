@@ -7,7 +7,7 @@ final class CurrencyCalculatorTableViewCell: UITableViewCell {
 
     // MARK: - Properties
 
-    // MARK: Private
+    // MARK: Public
 
     let currencyCalculatorView: CurrencyCalculatorView = .init()
 
@@ -16,7 +16,7 @@ final class CurrencyCalculatorTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(currencyCalculatorView)
-        contentView.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 35/255, alpha: 1.0)
+        contentView.backgroundColor = Colors.xDarkNavy
         addCurrencyCalculatorViewConstraints()
     }
 
@@ -35,13 +35,5 @@ final class CurrencyCalculatorTableViewCell: UITableViewCell {
         currencyCalculatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
         currencyCalculatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
         currencyCalculatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
-    }
-}
-
-// MARK: - Extension
-
-extension CurrencyCalculatorTableViewCell: UIPopoverPresentationControllerDelegate {
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
     }
 }

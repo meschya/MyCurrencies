@@ -21,8 +21,9 @@ final class CurrencyConverterTableViewController: UITableViewController {
 
     private func addViewSetups() {
         tableView.separatorStyle = .none
-        tableView.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 35/255, alpha: 1.0)
+        tableView.backgroundColor = Colors.xDarkNavy
         navigationController?.setNavigationBarHidden(true, animated: true)
+        tableView.register(Sections.self, forHeaderFooterViewReuseIdentifier: Sections.identifier)
     }
 
     // MARK: - Table view data source
@@ -31,16 +32,19 @@ final class CurrencyConverterTableViewController: UITableViewController {
         return sections.count
     }
 
-    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        guard let header = view as? UITableViewHeaderFooterView else { return }
-        header.textLabel?.font = .systemFont(ofSize: 25, weight: .bold)
-        header.textLabel?.frame = CGRect(x: header.bounds.origin.x, y: header.bounds.origin.y, width: header.bounds.width, height: header.bounds.height)
-        header.textLabel?.textAlignment = .center
-        header.textLabel?.textColor = .white
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Sections.identifier) as? Sections {
+            header.addUI(headerText: sections[section])
+            return header
+        }
+        return UIView()
     }
 
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section]
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {}
+
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let sections = tableView.dequeueReusableCell(withIdentifier: Sections.identifier)
+        return sections
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

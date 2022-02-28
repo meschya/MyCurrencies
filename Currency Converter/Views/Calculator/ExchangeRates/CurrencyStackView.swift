@@ -75,12 +75,12 @@ final class CurrencyStackView: UIStackView {
     private func addBuyLabelSetups() {
         buyLabel.textColor = .white
         buyLabel.textAlignment = .right
-        buyLabel.font = UIFont.systemFont(ofSize: 18, weight: .light)
+        buyLabel.font = .systemFont(ofSize: 18, weight: .light)
     }
     
     private func addSellLabelSetups() {
         sellLabel.textColor = .white
         sellLabel.textAlignment = .right
-        sellLabel.font = UIFont.systemFont(ofSize: 18, weight: .light)
+        sellLabel.font = .systemFont(ofSize: 18, weight: .light)
     }
 }

@@ -16,7 +16,7 @@ final class ExchangeRatesTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(exchangeRatesView)
-        contentView.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 35/255, alpha: 1.0)
+        contentView.backgroundColor = Colors.xDarkNavy
         addExchangeRatesViewConstraints()
     }
 

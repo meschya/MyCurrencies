@@ -19,7 +19,7 @@ final class InfoCurrencyTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 35/255, alpha: 1.0)
+        contentView.backgroundColor = Colors.xDarkNavy
         addSubviews()
         addSetups()
         addConstraints()
@@ -82,9 +82,7 @@ final class InfoCurrencyTableViewCell: UITableViewCell {
     private func addSubviews() {
         contentView.addSubview(currencyView)
         currencyView.addSubview(mainStackView)
-        mainStackView.addArrangedSubview(countryImageView)
-        mainStackView.addArrangedSubview(nameCurrencyLabel)
-        mainStackView.addArrangedSubview(scaleCurrencyLabel)
+        mainStackView.addArrangedSubviews(countryImageView, nameCurrencyLabel, scaleCurrencyLabel)
     }
     
     private func addSetups() {
@@ -95,7 +93,7 @@ final class InfoCurrencyTableViewCell: UITableViewCell {
     }
     
     private func addCurrencyViewSetups() {
-        currencyView.backgroundColor = UIColor(red: 36/255, green: 34/255, blue: 49/255, alpha: 1.0)
+        currencyView.backgroundColor = Colors.xLightNavy
         currencyView.layer.cornerRadius = 10
     }
     
@@ -109,12 +107,12 @@ final class InfoCurrencyTableViewCell: UITableViewCell {
     private func addNameCoinLabelSetups() {
         nameCurrencyLabel.textAlignment = .left
         nameCurrencyLabel.textColor = .white
-        nameCurrencyLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        nameCurrencyLabel.font = .systemFont(ofSize: 18, weight: .semibold)
     }
     
     private func addScaleCoinLabelSetups() {
         scaleCurrencyLabel.textAlignment = .right
-        scaleCurrencyLabel.textColor = UIColor(red: 175/255, green: 173/255, blue: 185/255, alpha: 1.0)
-        scaleCurrencyLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        scaleCurrencyLabel.textColor = Colors.xLabelNavy
+        scaleCurrencyLabel.font = .systemFont(ofSize: 18, weight: .semibold)
     }
 }

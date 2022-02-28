@@ -25,7 +25,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyCurrencies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsg-5K-1DY">
                                 <rect key="frame" x="128" y="443" width="172" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="172" id="U0i-Mb-p5j"/>
                                     <constraint firstAttribute="height" constant="40" id="fal-R5-xqn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="40"/>

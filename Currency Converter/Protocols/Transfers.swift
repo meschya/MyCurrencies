@@ -5,5 +5,5 @@ protocol TransferActionsBetweenVCDelegate: AnyObject {
 }
 
 protocol TransferCurrencyBetweenVCDelegate: AnyObject {
-    func transferMovieInfo(_ currency: Currency)
+    func transferCurrencyInfo(_ currency: Currency)
 }

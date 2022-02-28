@@ -12,9 +12,11 @@ final class CurrencyCalculatorView: UIView {
 
     private var currency: Currency? {
         didSet {
-            set(currency!.Cur_Abbreviation, currency!.Cur_OfficialRate)
-            bynTextField.text = ""
-            anyCurrencyTextField.text = ""
+            if let currency = currency {
+                set(currency.curAbbreviation, currency.curOfficialRate)
+                bynTextField.text = ""
+                anyCurrencyTextField.text = ""
+            }
         }
     }
 
@@ -106,12 +108,12 @@ final class CurrencyCalculatorView: UIView {
     }
     
     private func addViewSetups() {
-        backgroundColor = UIColor(red: 36/255, green: 34/255, blue: 49/255, alpha: 1.0)
+        backgroundColor = Colors.xLightNavy
         layer.cornerRadius = 15
         DispatchQueue.main.asyncAfter(deadline: .now()) {
             self.isSkeletonable = true
             self.skeletonCornerRadius = 15
-            self.showAnimatedSkeleton(usingColor: UIColor(red: 36/255, green: 34/255, blue: 49/255, alpha: 1.0),
+            self.showAnimatedSkeleton(usingColor: Colors.xLightNavy,
                                       animation: nil,
                                       transition: .crossDissolve(0.25))
         }
@@ -207,7 +209,7 @@ final class CurrencyCalculatorView: UIView {
     @objc func bynTextFieldDidChange(_ textField: UITextField) {
         if anyCurrencyImage.image != UIImage(named: "coin") {
             let byn = Double(bynTextField.text!) ?? 1
-            anyCurrencyTextField.text = String(format: "%.3f", byn/scaleCurrency)
+            anyCurrencyTextField.text = String(format: "%.3f", byn / scaleCurrency)
         }
     }
     
@@ -228,7 +230,7 @@ extension CurrencyCalculatorView: UIPopoverPresentationControllerDelegate {
 }
 
 extension CurrencyCalculatorView: TransferCurrencyBetweenVCDelegate {
-    func transferMovieInfo(_ currency: Currency) {
+    func transferCurrencyInfo(_ currency: Currency) {
         self.currency = currency
     }
 }

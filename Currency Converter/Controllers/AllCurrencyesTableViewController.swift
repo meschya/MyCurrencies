@@ -4,8 +4,8 @@ final class AllCurrencyesTableViewController: UITableViewController {
     // MARK: - Properties
 
     // MARK: Private
-    
-    private var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
+
+    private let activityIndicator: UIActivityIndicatorView = .init(style: .large)
     private var currencyes: [Currency] = [] {
         didSet {
             self.tableView.reloadData()
@@ -22,7 +22,7 @@ final class AllCurrencyesTableViewController: UITableViewController {
         fetchDataCurrency()
     }
 
-    // MARK: - API
+    // MARK: - Networking
 
     private func fetchDataCurrency() {
         showActivityIndicator()
@@ -42,7 +42,7 @@ final class AllCurrencyesTableViewController: UITableViewController {
     }
 
     private func addTableViewSetups() {
-        tableView.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 35/255, alpha: 1.0)
+        tableView.backgroundColor = Colors.xDarkNavy
         tableView.register(InfoCurrencyTableViewCell.self,
                            forCellReuseIdentifier: InfoCurrencyTableViewCell.identifier)
         tableView.separatorStyle = .none
@@ -52,11 +52,11 @@ final class AllCurrencyesTableViewController: UITableViewController {
         title = "Валюта"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
-    
+
     // MARK: - Helpers
-    
+
     // MARK: Private
-    
+
     private func showActivityIndicator() {
         view.isUserInteractionEnabled = false
         let viewController = tabBarController ?? navigationController ?? self
@@ -67,7 +67,7 @@ final class AllCurrencyesTableViewController: UITableViewController {
         viewController.view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
     }
-    
+
     private func hideActivityIndicator() {
         view.isUserInteractionEnabled = true
         activityIndicator.stopAnimating()
@@ -90,15 +90,15 @@ final class AllCurrencyesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: InfoCurrencyTableViewCell.identifier, for: indexPath) as? InfoCurrencyTableViewCell {
-            cell.set(currencyes[indexPath.row].Cur_Abbreviation,
-                     currencyes[indexPath.row].Cur_Abbreviation,
-                     String(format: "%.2f", currencyes[indexPath.row].Cur_OfficialRate))
+            cell.set(currencyes[indexPath.row].curAbbreviation,
+                     currencyes[indexPath.row].curAbbreviation,
+                     String(format: "%.2f", currencyes[indexPath.row].curOfficialRate))
             return cell
         }
         return UITableViewCell()
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.transferMovieInfo(currencyes[indexPath.row])
+        delegate?.transferCurrencyInfo(currencyes[indexPath.row])
     }
 }

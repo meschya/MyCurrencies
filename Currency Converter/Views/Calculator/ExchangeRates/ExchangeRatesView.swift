@@ -3,7 +3,7 @@ import UIKit
 
 final class ExchangeRatesView: UIView {
     // MARK: - Properties
-    
+
     // MARK: Private
 
     private let mainStackView: UIStackView = .init()
@@ -30,7 +30,7 @@ final class ExchangeRatesView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - API
+    // MARK: - Networking
 
     private func fetchDataCurrencyByUsd(_ id: Int) {
         APIManager.instance.getCurrencysBy(id: id) { currency in
@@ -84,11 +84,11 @@ final class ExchangeRatesView: UIView {
     }
 
     private func addViewSetups() {
-        backgroundColor = UIColor(red: 36/255, green: 34/255, blue: 49/255, alpha: 1.0)
+        backgroundColor = Colors.xLightNavy
         layer.cornerRadius = 15
         isSkeletonable = true
         skeletonCornerRadius = 15
-        showAnimatedSkeleton(usingColor: UIColor(red: 36/255, green: 34/255, blue: 49/255, alpha: 1.0),
+        showAnimatedSkeleton(usingColor: Colors.xLightNavy,
                              animation: nil,
                              transition: .crossDissolve(0.25))
     }
@@ -109,7 +109,7 @@ final class ExchangeRatesView: UIView {
         infoLabel.text = "* данные НацБанка Республики Беларусь"
         infoLabel.textColor = .darkGray
         infoLabel.textAlignment = .center
-        infoLabel.font = UIFont.systemFont(ofSize: 12, weight: .light)
+        infoLabel.font = .systemFont(ofSize: 12, weight: .light)
     }
 
     // MARK: - Helpers
@@ -125,8 +125,8 @@ final class ExchangeRatesView: UIView {
             stack.distribution = .fillEqually
             stack.alignment = .fill
             stack.set(CountryImage: UIImage(named: countryImages[counter - 1])!,
-                      Currency: " \(item.Cur_Scale) \(item.Cur_Abbreviation)",
-                      BuyCurrency: String(format: "%.3f", Double(item.Cur_OfficialRate)),
+                      Currency: " \(item.curScale) \(item.curAbbreviation)",
+                      BuyCurrency: String(format: "%.3f", Double(item.curOfficialRate)),
                       SellCurrency: "—")
             mainStackView.addArrangedSubview(stack)
         }
@@ -140,7 +140,7 @@ final class ExchangeRatesView: UIView {
             let label = UILabel()
             label.text = item
             label.textColor = .darkGray
-            label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+            label.font = .systemFont(ofSize: 17, weight: .semibold)
             if counter == 1 {
                 label.textAlignment = .left
             } else {
