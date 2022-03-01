@@ -12,11 +12,6 @@ final class Sections: UITableViewHeaderFooterView {
     func addUI(headerText text: String) {
         textLabel?.text = text
         textLabel?.font = .systemFont(ofSize: 25, weight: .bold)
-        textLabel?.frame = CGRect(x: bounds.origin.x,
-                                  y: bounds.origin.y,
-                                  width: bounds.width,
-                                  height: bounds.height)
-        textLabel?.textAlignment = .center
         textLabel?.textColor = .white
     }
 }

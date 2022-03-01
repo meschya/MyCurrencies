@@ -23,7 +23,7 @@ final class CurrencyConverterTableViewController: UITableViewController {
         tableView.separatorStyle = .none
         tableView.backgroundColor = Colors.xDarkNavy
         navigationController?.setNavigationBarHidden(true, animated: true)
-        tableView.register(Sections.self, forHeaderFooterViewReuseIdentifier: Sections.identifier)
+          tableView.register(Sections.self, forHeaderFooterViewReuseIdentifier: Sections.identifier)
     }
 
     // MARK: - Table view data source
@@ -39,8 +39,6 @@ final class CurrencyConverterTableViewController: UITableViewController {
         }
         return UIView()
     }
-
-    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {}
 
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let sections = tableView.dequeueReusableCell(withIdentifier: Sections.identifier)
